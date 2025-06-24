@@ -7,7 +7,7 @@ package Views;
 import Controls.CtlPatient;
 import Controls.CtlUser;
 import Controls.DataNotFoundException;
-import Models.MPatient;
+import Models.StudentModel;
 import Models.MUser;
 import java.awt.Frame;
 import java.time.LocalDateTime;

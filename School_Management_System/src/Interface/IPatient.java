@@ -4,7 +4,7 @@
  */
 package Interface;
 
-import Models.MPatient;
+import Models.StudentModel;
 import Models.MUpcomingAppointment;
 import java.util.ArrayList;
 import personal.IPersonal;
@@ -13,7 +13,7 @@ import personal.IPersonal;
  *
  * @author ITS
  */
-public interface IPatient extends IPersonal<Integer, MPatient> {
+public interface IPatient extends IPersonal<Integer, StudentModel> {
     
     ArrayList<MUpcomingAppointment> upcomingAppointments();
 }

@@ -5,7 +5,7 @@
 package Views;
 
 import Controls.CtlPatient;
-import Models.MPatient;
+import Models.StudentModel;
 import java.awt.Frame;
 import java.time.LocalDateTime;
 import javax.swing.JFrame;
@@ -16,11 +16,11 @@ import javax.swing.SwingUtilities;
  * @author ITS
  */
 public class AddStudentForm extends javax.swing.JDialog {
-
+    
     private CtlPatient patient = new CtlPatient();
 
     /**
-     * Creates new form VUpdatePatients
+     * Creates new form VUpdatePatients 
      */
     public AddStudentForm(Frame parent, boolean modal) {
         super(parent, modal);
@@ -41,7 +41,7 @@ public class AddStudentForm extends javax.swing.JDialog {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        txtPhone = new com.raven.swing.MyTextField();
+        txtMajor = new com.raven.swing.MyTextField();
         lblAddress = new javax.swing.JLabel();
         txtAddress = new com.raven.swing.MyTextField();
         lblName = new javax.swing.JLabel();
@@ -52,18 +52,19 @@ public class AddStudentForm extends javax.swing.JDialog {
         btnِAddPatient = new com.raven.swing.Button();
         lblGender = new javax.swing.JLabel();
         lblPhone = new javax.swing.JLabel();
-        txtAge1 = new com.raven.swing.MyTextField();
+        txtEmail = new com.raven.swing.MyTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setOpaque(true);
 
-        txtPhone.setBackground(new java.awt.Color(204, 204, 204));
-        txtPhone.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtMajor.setBackground(new java.awt.Color(204, 204, 204));
+        txtMajor.setForeground(new java.awt.Color(0, 0, 0));
+        txtMajor.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtMajor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneKeyTyped(evt);
+                txtMajorKeyTyped(evt);
             }
         });
 
@@ -71,6 +72,7 @@ public class AddStudentForm extends javax.swing.JDialog {
         lblAddress.setText("العنوان");
 
         txtAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtAddress.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +100,7 @@ public class AddStudentForm extends javax.swing.JDialog {
         lblTitle.setText("إضافة طالب");
 
         txtAge.setBackground(new java.awt.Color(204, 204, 204));
+        txtAge.setForeground(new java.awt.Color(0, 0, 0));
         txtAge.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,25 +125,26 @@ public class AddStudentForm extends javax.swing.JDialog {
         });
 
         lblGender.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblGender.setText("الجنس");
+        lblGender.setText("البريد الالكتروني");
 
         lblPhone.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblPhone.setText("الرقم");
+        lblPhone.setText("التخصص");
 
-        txtAge1.setBackground(new java.awt.Color(204, 204, 204));
-        txtAge1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        txtAge1.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmail.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAge1ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-        txtAge1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAge1KeyTyped(evt);
+                txtEmailKeyTyped(evt);
             }
         });
 
-        jLayeredPane1.setLayer(txtPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtMajor, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(txtAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblName, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -151,7 +155,7 @@ public class AddStudentForm extends javax.swing.JDialog {
         jLayeredPane1.setLayer(btnِAddPatient, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblGender, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtAge1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -159,38 +163,36 @@ public class AddStudentForm extends javax.swing.JDialog {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblName))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(275, 275, 275)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtAge1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblGender, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(16, 16, 16)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblPhone))
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblAge))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnِAddPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                    .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(lblName))))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(btnِAddPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblGender)
+                                    .addComponent(lblAddress))
+                                .addGap(16, 16, 16)
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhone, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAge, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,16 +208,16 @@ public class AddStudentForm extends javax.swing.JDialog {
                     .addComponent(lblAge)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender)
-                    .addComponent(txtAge1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddress)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(btnِAddPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,11 +234,11 @@ public class AddStudentForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        if (!Character.isDigit(evt.getKeyChar()) | txtPhone.getText().length() == 9) {
+    private void txtMajorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMajorKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) | txtMajor.getText().length() == 9) {
             evt.consume();
         }
-    }//GEN-LAST:event_txtPhoneKeyTyped
+    }//GEN-LAST:event_txtMajorKeyTyped
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
@@ -261,42 +263,40 @@ public class AddStudentForm extends javax.swing.JDialog {
         if (!txtName.getText().trim().isEmpty() & txtName.getText().length() >= 3) {
             try {
                 int age = Integer.parseInt(txtAge.getText());
-                if (txtPhone.getText().trim().isEmpty() || txtPhone.getText().length() == 9) {
-                    if (!txtAddress.getText().trim().isEmpty()) {
-                        
-                            MPatient mPatient = new MPatient();
-                            mPatient.setFull_name(txtName.getText());
-                            mPatient.setAge(age);
-                            mPatient.setAddress(txtAddress.getText());
-                            mPatient.setPhone(txtPhone.getText());
-                            if (btnrGMale.isSelected()) {
-                                mPatient.setGender("Male");
-                            } else {
-                                mPatient.setGender("Female");
-                            }
-                            mPatient.setCreated_at(LocalDateTime.now());
-                            mPatient.setActive(true);
+                if (txtEmail.getText().trim().isEmpty()) {
+                    if (txtMajor.getText().trim().isEmpty()) {
+                        if (!txtAddress.getText().trim().isEmpty()) {
+                            
+                            StudentModel studentModel = new StudentModel();
+                            studentModel.setFull_name(txtName.getText());
+                            studentModel.setAge(age);
+                            studentModel.setEmail(txtEmail.getText());
+                            studentModel.setMajor(txtMajor.getText());
+                            studentModel.setAddress(txtAddress.getText());
                             try {
-                                patient.insert(mPatient);
+//                                patient.insert(mPatient);
                                 message.setLblTitle("تم الإضافة بنجاح");
                                 message.setVisible(true);
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }
                             this.dispose();
-                        
+                            
+                        } else {
+                            message.setLblTitle("يجب أن تدخل عنوان الطالب");
+                            message.setVisible(true);
+                            txtAddress.requestFocus();
+                        }
                     } else {
-                        message.setLblTitle("يجب أن تدخل عنوان المريض");
+                        message.setLblTitle("يجب أن تدخل تخصص الطالب");
                         message.setVisible(true);
-                        txtAddress.requestFocus();
+                        txtMajor.requestFocus();
                     }
                 } else {
-                    message.setLblTitle("يجب أن يكون رقم المريض يحتوي على 9 أرقام");
-                    message.setVisible(true);
-                    txtPhone.requestFocus();
+                    message.setLblTitle("يجب أن تدخل البريد الإلتكتروني");
                 }
             } catch (NumberFormatException ex) {
-                message.setLblTitle("یجب أن تدخل عمر المريض ");
+                message.setLblTitle("یجب أن تدخل عمر االطالب ");
                 message.setVisible(true);
                 txtAge.requestFocus();
             }
@@ -307,169 +307,19 @@ public class AddStudentForm extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnِAddPatientActionPerformed
 
-    private void txtAge1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAge1ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAge1ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void txtAge1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAge1KeyTyped
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAge1KeyTyped
+    }//GEN-LAST:event_txtEmailKeyTyped
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(() -> {
             AddStudentForm dialog = new AddStudentForm(new JFrame(), true);
             dialog.setVisible(true);
@@ -487,8 +337,8 @@ public class AddStudentForm extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitle;
     private com.raven.swing.MyTextField txtAddress;
     private com.raven.swing.MyTextField txtAge;
-    private com.raven.swing.MyTextField txtAge1;
+    private com.raven.swing.MyTextField txtEmail;
+    private com.raven.swing.MyTextField txtMajor;
     private com.raven.swing.MyTextField txtName;
-    private com.raven.swing.MyTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }

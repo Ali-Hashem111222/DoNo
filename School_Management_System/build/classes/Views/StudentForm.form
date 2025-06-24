@@ -105,30 +105,18 @@
             <Component class="javaswingdev.swing.table.Table" name="tblPatients">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="0">
+                  <Table columnCount="7" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
                     <Column editable="false" title="&#x627;&#x644;&#x627;&#x633;&#x645;" type="java.lang.Object"/>
                     <Column editable="false" title="&#x627;&#x644;&#x639;&#x645;&#x631;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#x627;&#x644;&#x62c;&#x646;&#x633;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#x627;&#x644;&#x631;&#x642;&#x645;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#x627;&#x644;&#x628;&#x631;&#x64a;&#x62f; &#x627;&#x644;&#x627;&#x644;&#x643;&#x62a;&#x631;&#x648;&#x646;&#x64a;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#x627;&#x644;&#x62a;&#x62e;&#x635;&#x635;" type="java.lang.Object"/>
                     <Column editable="false" title="&#x627;&#x644;&#x639;&#x646;&#x648;&#x627;&#x646;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#x648;&#x635;&#x641;&#x629; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62c;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#x62a;&#x627;&#x631;&#x64a;&#x62e; &#x627;&#x644;&#x625;&#x646;&#x634;&#x627;&#x621;" type="java.lang.Object"/>
                     <Column editable="true" title="&#x627;&#x644;&#x62d;&#x62f;&#x62b;" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -188,7 +176,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x625;&#x636;&#x627;&#x641;&#x629; &#x645;&#x631;&#x64a;&#x636;"/>
+        <Property name="text" type="java.lang.String" value="&#x625;&#x636;&#x627;&#x641;&#x629; &#x637;&#x627;&#x644;&#x628;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Simplified Arabic" size="14" style="1"/>
         </Property>

@@ -2,7 +2,7 @@ package Views;
 
 import Controls.CtlUser;
 import Controls.DataNotFoundException;
-import Models.MPatient;
+import Models.StudentModel;
 import Models.MUser;
 import cell.TableActionCellEditor;
 import cell.TableActionCellRender;

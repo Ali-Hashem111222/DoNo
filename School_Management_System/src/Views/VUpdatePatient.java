@@ -5,8 +5,9 @@
 package Views;
 
 import Controls.CtlPatient;
-import Models.MPatient;
+import Models.StudentModel;
 import java.awt.Frame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -30,7 +31,7 @@ public class VUpdatePatient extends javax.swing.JDialog {
         pack();
     }
 
-    public VUpdatePatient(Frame parent, boolean modal, MPatient obj) {
+    public VUpdatePatient(Frame parent, boolean modal, StudentModel obj) {
         super(parent, modal);
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -40,19 +41,14 @@ public class VUpdatePatient extends javax.swing.JDialog {
         pack();
     }
 
-    private void setData(MPatient mPatient) {
+    private void setData(StudentModel mPatient) {
         if (mPatient != null) {
             txtId.setText(String.valueOf(mPatient.getId()));
             txtName.setText(mPatient.getFull_name());
             txtAge.setText(String.valueOf(mPatient.getAge()));
-            if (mPatient.getGender().equalsIgnoreCase("Male")) {
-                btnrGMale.setSelected(true);
-            } else {
-                btnrGFemale.setSelected(true);
-            }
-            txtPhone.setText(String.valueOf(mPatient.getPhone()));
+//            txtPhone.setText(String.valueOf(mPatient.getPhone()));
             txtAddress.setText(mPatient.getAddress());
-            txtMedication.setText(mPatient.getMedicat());
+//            txtMedication.setText(mPatient.getMedicat());
         }
     }
 
@@ -66,14 +62,7 @@ public class VUpdatePatient extends javax.swing.JDialog {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        lblAddress = new javax.swing.JLabel();
-        txtAddress = new com.raven.swing.MyTextField();
-        btnrGMale = new javax.swing.JRadioButton();
-        btnrGFemale = new javax.swing.JRadioButton();
-        lblPhone1 = new javax.swing.JLabel();
-        txtMedication = new com.raven.swing.MyTextField();
         lblTitle = new javax.swing.JLabel();
-        btnUpdate = new com.raven.swing.Button();
         txtId = new com.raven.swing.MyTextField();
         lblId = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -81,48 +70,21 @@ public class VUpdatePatient extends javax.swing.JDialog {
         lblAge = new javax.swing.JLabel();
         txtAge = new com.raven.swing.MyTextField();
         lblGender = new javax.swing.JLabel();
+        txtEmail = new com.raven.swing.MyTextField();
         lblPhone = new javax.swing.JLabel();
-        txtPhone = new com.raven.swing.MyTextField();
+        txtMajor = new com.raven.swing.MyTextField();
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new com.raven.swing.MyTextField();
+        btnِAddPatient = new com.raven.swing.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setOpaque(true);
 
-        lblAddress.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblAddress.setText("العنوان");
-
-        btnrGMale.setText("Male");
-        btnrGMale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnrGMaleActionPerformed(evt);
-            }
-        });
-
-        btnrGFemale.setText("Female");
-        btnrGFemale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnrGFemaleActionPerformed(evt);
-            }
-        });
-
-        lblPhone1.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblPhone1.setText("وصفة العلاج");
-
         lblTitle.setFont(new java.awt.Font("Simplified Arabic", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("تعديل المريض");
-
-        btnUpdate.setBackground(new java.awt.Color(51, 51, 51));
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("تعديل");
-        btnUpdate.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        btnUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
 
         txtId.setEnabled(false);
 
@@ -135,26 +97,73 @@ public class VUpdatePatient extends javax.swing.JDialog {
         lblAge.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
         lblAge.setText("العمر");
 
-        lblGender.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblGender.setText("الجنس");
-
-        lblPhone.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
-        lblPhone.setText("الرقم");
-
-        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAge.setBackground(new java.awt.Color(204, 204, 204));
+        txtAge.setForeground(new java.awt.Color(0, 0, 0));
+        txtAge.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneKeyTyped(evt);
+                txtAgeKeyTyped(evt);
             }
         });
 
-        jLayeredPane1.setLayer(lblAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnrGMale, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnrGFemale, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lblPhone1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtMedication, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lblGender.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
+        lblGender.setText("البريد الالكتروني");
+
+        txtEmail.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmail.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
+
+        lblPhone.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
+        lblPhone.setText("التخصص");
+
+        txtMajor.setBackground(new java.awt.Color(204, 204, 204));
+        txtMajor.setForeground(new java.awt.Color(0, 0, 0));
+        txtMajor.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtMajor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMajorKeyTyped(evt);
+            }
+        });
+
+        lblAddress.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
+        lblAddress.setText("العنوان");
+
+        txtAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtAddress.setForeground(new java.awt.Color(0, 0, 0));
+        txtAddress.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
+        btnِAddPatient.setBackground(new java.awt.Color(51, 51, 51));
+        btnِAddPatient.setForeground(new java.awt.Color(255, 255, 255));
+        btnِAddPatient.setText("تعديل");
+        btnِAddPatient.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
+        btnِAddPatient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnِAddPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnِAddPatientActionPerformed(evt);
+            }
+        });
+
         jLayeredPane1.setLayer(lblTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnUpdate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(txtId, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblId, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblName, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -162,58 +171,50 @@ public class VUpdatePatient extends javax.swing.JDialog {
         jLayeredPane1.setLayer(lblAge, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(txtAge, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblGender, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtMajor, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnِAddPatient, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblName))
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblAddress))
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(btnrGMale, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(58, 58, 58)
-                                        .addComponent(btnrGFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblGender)))
-                                .addGap(47, 47, 47)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblPhone))
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblAge))
-                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblId))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(txtMedication, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblPhone1)))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(lblGender)
+                    .addComponent(lblAddress))
+                .addGap(16, 16, 16)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPhone, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAge, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(19, 19, 19))
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblName)
+                            .addGap(79, 79, 79)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblId)))
+                    .addComponent(btnِAddPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,26 +227,21 @@ public class VUpdatePatient extends javax.swing.JDialog {
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                .addGap(77, 77, 77)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAge)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender)
-                    .addComponent(btnrGMale)
-                    .addComponent(btnrGFemale))
-                .addGap(69, 69, 69)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddress)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhone1)
-                    .addComponent(txtMedication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(btnِAddPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,86 +258,82 @@ public class VUpdatePatient extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnrGMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrGMaleActionPerformed
-        if (btnrGMale.isSelected()) {
-            btnrGFemale.setSelected(false);
-            btnrGMale.setSelected(true);
-        } else {
-            btnrGFemale.setSelected(true);
-            btnrGMale.setSelected(false);
-        }
-    }//GEN-LAST:event_btnrGMaleActionPerformed
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
 
-    private void btnrGFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrGFemaleActionPerformed
-        if (btnrGFemale.isSelected()) {
-            btnrGMale.setSelected(false);
-            btnrGFemale.setSelected(true);
-        } else {
-            btnrGMale.setSelected(true);
-            btnrGFemale.setSelected(false);
+    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) | txtAge.getText().length() == 2) {
+            evt.consume();
         }
-    }//GEN-LAST:event_btnrGFemaleActionPerformed
+    }//GEN-LAST:event_txtAgeKeyTyped
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        VMessage message = new VMessage((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailKeyTyped
+
+    private void txtMajorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMajorKeyTyped
+        if (!Character.isDigit(evt.getKeyChar()) | txtMajor.getText().length() == 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMajorKeyTyped
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void btnِAddPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnِAddPatientActionPerformed
+        VMessage message = new VMessage((java.awt.Frame) SwingUtilities.getWindowAncestor(this), true);
         if (!txtName.getText().trim().isEmpty() & txtName.getText().length() >= 3) {
             try {
                 int age = Integer.parseInt(txtAge.getText());
-                if (txtPhone.getText().trim().isEmpty() || txtPhone.getText().length() == 9) {
-                    if (!txtAddress.getText().trim().isEmpty()) {
-                        if (!txtMedication.getText().trim().isEmpty()) {
-                            MPatient mPatient = new MPatient();
-                            mPatient.setId(Integer.parseInt(txtId.getText()));
-                            mPatient.setFull_name(txtName.getText());
-                            mPatient.setAge(age);
-                            mPatient.setAddress(txtAddress.getText());
-                            mPatient.setPhone(txtPhone.getText());
-                            if (btnrGMale.isSelected()) {
-                                mPatient.setGender("Male");
-                            } else {
-                                mPatient.setGender("Female");
-                            }
-                            mPatient.setMedicat(txtMedication.getText());
+                if (txtEmail.getText().trim().isEmpty()) {
+                    if (txtMajor.getText().trim().isEmpty()) {
+                        if (!txtAddress.getText().trim().isEmpty()) {
+
+                            StudentModel studentModel = new StudentModel();
+                            studentModel.setFull_name(txtName.getText());
+                            studentModel.setAge(age);
+                            studentModel.setEmail(txtEmail.getText());
+                            studentModel.setMajor(txtMajor.getText());
+                            studentModel.setAddress(txtAddress.getText());
                             try {
-                                patient.update(mPatient);
-                                message.setLblTitle("تم التعديل بنجاح");
+                                //                                patient.insert(mPatient);
+                                message.setLblTitle("تم الإضافة بنجاح");
                                 message.setVisible(true);
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }
                             this.dispose();
+
                         } else {
-                            message.setLblTitle(message.getLblTitle() + "يجب أن تدخل وصفة العلاج");
+                            message.setLblTitle("يجب أن تدخل عنوان الطالب");
                             message.setVisible(true);
-                            txtMedication.requestFocus();
+                            txtAddress.requestFocus();
                         }
                     } else {
-                        message.setLblTitle(message.getLblTitle() + "يجب أن تدخل عنوان المريض");
+                        message.setLblTitle("يجب أن تدخل تخصص الطالب");
                         message.setVisible(true);
-                        txtAddress.requestFocus();
+                        txtMajor.requestFocus();
                     }
                 } else {
-                    message.setLblTitle(message.getLblTitle() + "يجب أن يكون رقم المريض يحتوي على 9 أرقام");
-                    message.setVisible(true);
-                    txtPhone.requestFocus();
+                    message.setLblTitle("يجب أن تدخل البريد الإلتكتروني");
                 }
             } catch (NumberFormatException ex) {
-                message.setLblTitle(message.getLblTitle() + "یجب أن تدخل عمر المريض ");
+                message.setLblTitle("یجب أن تدخل عمر االطالب ");
                 message.setVisible(true);
                 txtAge.requestFocus();
             }
         } else {
-            message.setLblTitle(message.getLblTitle() + "يجب التأكد من الاسم");
+            message.setLblTitle("يجب التأكد من الاسم");
             message.setVisible(true);
             txtName.requestFocus();
         }
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        if (!Character.isDigit(evt.getKeyChar()) | txtPhone.getText().length() == 9) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPhoneKeyTyped
+    }//GEN-LAST:event_btnِAddPatientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,9 +433,7 @@ public class VUpdatePatient extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.swing.Button btnUpdate;
-    private javax.swing.JRadioButton btnrGFemale;
-    private javax.swing.JRadioButton btnrGMale;
+    private com.raven.swing.Button btnِAddPatient;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
@@ -451,13 +441,12 @@ public class VUpdatePatient extends javax.swing.JDialog {
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhone;
-    private javax.swing.JLabel lblPhone1;
     private javax.swing.JLabel lblTitle;
     private com.raven.swing.MyTextField txtAddress;
     private com.raven.swing.MyTextField txtAge;
+    private com.raven.swing.MyTextField txtEmail;
     private com.raven.swing.MyTextField txtId;
-    private com.raven.swing.MyTextField txtMedication;
+    private com.raven.swing.MyTextField txtMajor;
     private com.raven.swing.MyTextField txtName;
-    private com.raven.swing.MyTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }

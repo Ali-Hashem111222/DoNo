@@ -1,7 +1,7 @@
 package Views;
 
 import Controls.CtlPatient;
-import Models.MPatient;
+import Models.StudentModel;
 import cell.TableActionCellEditor;
 import cell.TableActionCellRender;
 import cell.TableActionEvent;
@@ -14,14 +14,14 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class VPatient extends javax.swing.JPanel {
+public class StudentForm extends javax.swing.JPanel {
 
     private CtlPatient patient = new CtlPatient();
-    private VMessage message = new VMessage((Frame) SwingUtilities.getWindowAncestor(VPatient.this), true);
+    private VMessage message = new VMessage((Frame) SwingUtilities.getWindowAncestor(StudentForm.this), true);
     private DefaultTableModel model;
     private TableRowSorter<DefaultTableModel> rowSorter;
 
-    public VPatient() {
+    public StudentForm() {
         initComponents();
         init();
     }
@@ -35,8 +35,8 @@ public class VPatient extends javax.swing.JPanel {
             @Override
             public void onUpdate(int row) {
                 if (row >= 0) {
-                    MPatient mPatient = patient.getById(Integer.parseInt(tblPatients.getValueAt(row, 0).toString()));
-                    VUpdatePatient update = new VUpdatePatient((Frame) SwingUtilities.getWindowAncestor(VPatient.this), true, mPatient);
+                    StudentModel mPatient = patient.getById(Integer.parseInt(tblPatients.getValueAt(row, 0).toString()));
+                    VUpdatePatient update = new VUpdatePatient((Frame) SwingUtilities.getWindowAncestor(StudentForm.this), true, mPatient);
                     setLayout(null);
                     update.setVisible(true);
                     setData();
@@ -49,7 +49,7 @@ public class VPatient extends javax.swing.JPanel {
                     if (tblPatients.isEditing()) {
                         tblPatients.getCellEditor().stopCellEditing();
                     }
-                    VCheckOfRemove check = new VCheckOfRemove((Frame) SwingUtilities.getWindowAncestor(VPatient.this), true);
+                    VCheckOfRemove check = new VCheckOfRemove((Frame) SwingUtilities.getWindowAncestor(StudentForm.this), true);
                     check.setLblTitle("هل انت متاكد من الحذف");
                     check.setVisible(true);
                     if (check.isCheck()) {
@@ -76,12 +76,12 @@ public class VPatient extends javax.swing.JPanel {
         try {
             model = (DefaultTableModel) tblPatients.getModel();
             model.setRowCount(0);
-            for (MPatient read : patient.getAll()) {
-                model.addRow(new Object[]{read.getId(), read.getFull_name(), read.getAge(), read.getGender(), read.getPhone(), read.getAddress(), read.getMedicat(), read.getCreated_at().toLocalDate()});
+            for (StudentModel read : patient.getAll()) {
+                model.addRow(new Object[]{read.getId(), read.getFull_name(), read.getAge(),read.getEmail(),read.getMajor(),read.getAddress()});
             }
-            cardCountPatients.setData(new ModelCard(null, null, null, patient.count().toString(), "عدد المرضى"));
+            cardCountPatients.setData(new ModelCard(null, null, null, patient.count().toString(), "عدد الطلاب"));
         } catch (Exception ex) {
-            System.out.println("Not found data");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -109,11 +109,11 @@ public class VPatient extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "الاسم", "العمر", "الجنس", "الرقم", "العنوان", "وصفة العلاج", "تاريخ الإنشاء", "الحدث"
+                "#", "الاسم", "العمر", "البريد الالكتروني", "التخصص", "العنوان", "الحدث"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -142,7 +142,7 @@ public class VPatient extends javax.swing.JPanel {
         btnAdd.setBackground(new java.awt.Color(102, 153, 255));
         btnAdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("إضافة مريض");
+        btnAdd.setText("إضافة طالب");
         btnAdd.setFont(new java.awt.Font("Simplified Arabic", 1, 14)); // NOI18N
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class VPatient extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        AddStudentForm add = new AddStudentForm((Frame) SwingUtilities.getWindowAncestor(VPatient.this), true);
+        AddStudentForm add = new AddStudentForm((Frame) SwingUtilities.getWindowAncestor(StudentForm.this), true);
         setLayout(null);
         add.setVisible(true);
         setData();

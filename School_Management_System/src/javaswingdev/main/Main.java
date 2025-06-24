@@ -5,7 +5,7 @@ import Views.Login;
 import Views.VAppointment;
 import Views.VHome;
 import Views.VMessage;
-import Views.VPatient;
+import Views.StudentForm;
 import Views.VPrescriptoins;
 import Views.VUser;
 import Views.VVisit;
@@ -45,7 +45,7 @@ public class Main extends javax.swing.JFrame {
                 if (index == 0 && indexSubMenu == 0) {
                     showForm(new VHome());
                 } else if (index == 1 && indexSubMenu == 0) {
-                    showForm(new VPatient());
+                    showForm(new StudentForm());
                 } else if (index == 2 && indexSubMenu == 0) {
                     showForm(new VAppointment());
                 } else if (index == 3 && indexSubMenu == 0) {

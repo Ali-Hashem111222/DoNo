@@ -6,7 +6,7 @@ package Controls;
 
 import Connect.ClsConnect;
 import Interface.IPatient;
-import Models.MPatient;
+import Models.StudentModel;
 import Models.MUpcomingAppointment;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
@@ -20,22 +20,21 @@ import java.sql.Timestamp;
  */
 public class CtlPatient implements IPatient {
 
-    private ArrayList<MPatient> array = new ArrayList<MPatient>();
+    private ArrayList<StudentModel> array = new ArrayList<StudentModel>();
     private ArrayList<MUpcomingAppointment> list = new ArrayList<MUpcomingAppointment>();
     private PreparedStatement stmt;
     private ResultSet rs;
 
     @Override
-    public void insert(MPatient obj) {
+    public void insert(StudentModel obj) {
         try {
             String sql = "insert into tbl_patients (Full_name, Age, Gender, Phone, Address, Medication_notes, Created_at) values (?, ?, ?, ?, ?, ?, ?)";
             stmt = ClsConnect.getConnection().prepareStatement(sql);
             stmt.setString(1, obj.getFull_name());
             stmt.setInt(2, obj.getAge());
-            stmt.setString(3, obj.getGender());
-            stmt.setString(4, String.valueOf(obj.getPhone()));
+            stmt.setString(3, obj.getEmail());
+            stmt.setString(4, String.valueOf(obj.getMajor()));
             stmt.setString(5, obj.getAddress());
-            stmt.setString(6, obj.getMedicat());
             stmt.setTimestamp(7, Timestamp.valueOf(obj.getCreated_at()));
             stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -103,16 +102,15 @@ public class CtlPatient implements IPatient {
     }
 
     @Override
-    public void update(MPatient obj) {
+    public void update(StudentModel obj) {
         try {
             String sql = "update tbl_patients set Full_name = ?, Age = ?, Gender = ?, Phone = ?, Address = ?, Medication_notes = ? where ID = ?";
             stmt = ClsConnect.getConnection().prepareStatement(sql);
             stmt.setString(1, obj.getFull_name());
             stmt.setInt(2, obj.getAge());
-            stmt.setString(3, obj.getGender());
-            stmt.setString(4, obj.getPhone());
+            stmt.setString(3, obj.getEmail());
+            stmt.setString(4, obj.getMajor());
             stmt.setString(5, obj.getAddress());
-            stmt.setString(6, obj.getMedicat());
             stmt.setInt(7, obj.getId());
             stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -128,7 +126,7 @@ public class CtlPatient implements IPatient {
     }
 
     @Override
-    public MPatient getById(Integer id) {
+    public StudentModel getById(Integer id) {
         try {
             return getAll().stream().filter(x -> x.getId() == id).findFirst().orElse(null);
         } catch (DataNotFoundException ex) {
@@ -163,14 +161,14 @@ public class CtlPatient implements IPatient {
     }
 
     @Override
-    public ArrayList<MPatient> getAll() throws DataNotFoundException {
+    public ArrayList<StudentModel> getAll() throws DataNotFoundException {
         array.clear();
         String sql = "select ID, Full_name, Age, Gender, Phone, Address, Medication_notes, Created_at from tbl_patients  where Active = 1";
         try {
             stmt = ClsConnect.getConnection().prepareStatement(sql);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                array.add(new MPatient(rs.getInt("ID"), rs.getString("Full_name"), rs.getInt("Age"), rs.getString("Gender"), rs.getString("Phone"), rs.getString("Address"), rs.getString("Medication_notes"), rs.getTimestamp("Created_at").toLocalDateTime()));
+                array.add(new StudentModel(rs.getInt("student_id"), rs.getString("name"), rs.getInt("age"), rs.getString("email"), rs.getString("major"), rs.getString("Address")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
